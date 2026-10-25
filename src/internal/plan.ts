@@ -427,23 +427,6 @@ function buildStats(
   };
 }
 
-function encodeComponents(components: readonly KeyScalar[]): string {
-  // The incoming group and existing bucket share the same encoding, so we reuse
-  // the already-resolved existing map by re-encoding the group's components.
-  let encoded = "";
-  for (const component of components) {
-    if (typeof component === "string") {
-      encoded += `s${component.length}:${component}`;
-    } else if (typeof component === "number") {
-      const text = Object.is(component, -0) ? "0" : String(component);
-      encoded += `n${text.length}:${text}`;
-    } else {
-      encoded += component ? "b:1" : "b:0";
-    }
-  }
-  return encoded;
-}
-
 function minIndex(indexes: readonly number[]): number {
   let min = Number.POSITIVE_INFINITY;
   for (const index of indexes) {

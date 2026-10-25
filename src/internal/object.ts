@@ -3,8 +3,6 @@
  * and for building result objects without risking prototype pollution.
  */
 
-const hasOwn = Object.prototype.hasOwnProperty;
-
 /** Property names that must never be written to a normal object via assignment. */
 const FORBIDDEN_WRITE_KEYS = new Set(["__proto__", "prototype", "constructor"]);
 
@@ -35,11 +33,6 @@ export function readOwnProperty(target: object, key: string): OwnPropertyRead {
     return { exists: true, value: undefined, accessor: true };
   }
   return { exists: true, value: descriptor.value, accessor: false };
-}
-
-/** Whether `target` has `key` as an own property. */
-export function hasOwnProperty(target: object, key: string): boolean {
-  return hasOwn.call(target, key);
 }
 
 /**
