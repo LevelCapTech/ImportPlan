@@ -44,7 +44,7 @@
     "build:fixup": "node scripts/postbuild.mjs",
     "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:fixup",
     "typecheck": "tsc --noEmit -p tsconfig.json",
-    "test": "node --import tsx --test \"test/**/*.test.ts\"",
+    "test": "node --import tsx --test test/*.test.ts",
     "check": "npm run typecheck && npm run test",
     "prepublishOnly": "npm run build"
   },
